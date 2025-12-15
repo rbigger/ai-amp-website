@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState('light');
 
   useEffect(() => {
+    setMounted(true);
     // Check for saved preference or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -24,6 +26,16 @@ export default function ThemeToggle() {
     localStorage.setItem('theme', newTheme);
   };
 
+  // Render placeholder during SSR to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <button className="theme-toggle" aria-label="Toggle theme">
+        <span className="theme-toggle-icon">◐</span>
+        <span>Theme</span>
+      </button>
+    );
+  }
+
   return (
     <button
       className="theme-toggle"
@@ -31,7 +43,7 @@ export default function ThemeToggle() {
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       <span className="theme-toggle-icon">
-        {theme === 'light' ? '☀️' : '🌙'}
+        {theme === 'light' ? '☀' : '☾'}
       </span>
       <span>{theme === 'light' ? 'Light' : 'Dark'}</span>
     </button>

@@ -1,8 +1,5 @@
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-
-// Dynamic import to prevent SSR hydration mismatch
-const ThemeToggle = dynamic(() => import('./ThemeToggle'), { ssr: false });
+import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   return (
