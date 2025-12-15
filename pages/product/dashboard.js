@@ -15,8 +15,35 @@ export default function Dashboard() {
         </div>
       </section>
 
-      {/* Overview */}
+      {/* Screenshot */}
       <section className="section">
+        <div className="container">
+          <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+            <img
+              src="/images/dashboard-screenshot.png"
+              alt="AI-AMP Dashboard showing agent monitoring and messaging"
+              style={{ width: '100%', display: 'block' }}
+            />
+          </div>
+          <div className="grid grid-3 mt-xl">
+            <div className="card">
+              <h4>Status Bar</h4>
+              <p className="mb-0">Top row monitors context health (cMon), PTY terminal connection, database connection (DB), and network status (Net) - all at a glance.</p>
+            </div>
+            <div className="card">
+              <h4>Agent Panel</h4>
+              <p className="mb-0">Shows inbox message count, agent name, working/idle status, assigned project, and a color-coded context usage thermometer showing percentage consumed.</p>
+            </div>
+            <div className="card">
+              <h4>Message Inbox</h4>
+              <p className="mb-0">Right panel displays messages sent to you from various agents - status updates, decisions needed, test results, and feature completions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="section section-alt">
         <div className="container">
           <h2 className="text-center mb-lg">22 Views. Complete Control.</h2>
           <div className="grid grid-3">
@@ -37,7 +64,7 @@ export default function Dashboard() {
       </section>
 
       {/* View Categories */}
-      <section className="section section-alt">
+      <section className="section">
         <div className="container">
           <h2 className="text-center mb-2xl">Dashboard Sections</h2>
           <div className="grid grid-2">
