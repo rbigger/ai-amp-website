@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+// Dynamic import to prevent SSR hydration mismatch
+const ThemeToggle = dynamic(() => import('./ThemeToggle'), { ssr: false });
 
 export default function Navigation() {
   return (
@@ -28,6 +32,7 @@ export default function Navigation() {
           </li>
           <li><Link href="/pricing">Pricing</Link></li>
           <li><Link href="#">Resources</Link></li>
+          <li><ThemeToggle /></li>
           <li><Link href="/demo-request" className="btn btn-primary">Request Demo</Link></li>
         </ul>
         <button className="nav-mobile-toggle">&#9776;</button>

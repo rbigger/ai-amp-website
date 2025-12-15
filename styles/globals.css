@@ -1,8 +1,8 @@
 /* AI-AMP Website Stylesheet */
-/* Version: 2.0 - React/Next.js */
+/* Version: 2.1 - React/Next.js with Dark Mode */
 
 /* ========================================
-   CSS Variables
+   CSS Variables - Light Mode (Default)
    ======================================== */
 :root {
   /* Colors */
@@ -55,6 +55,31 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* ========================================
+   Dark Mode Variables
+   ======================================== */
+[data-theme="dark"] {
+  --color-primary: #60a5fa;
+  --color-primary-light: #93c5fd;
+  --color-primary-dark: #3b82f6;
+  --color-secondary: #94a3b8;
+  --color-accent: #2dd4bf;
+  --color-accent-light: #5eead4;
+  --color-background: #0f172a;
+  --color-background-alt: #1e293b;
+  --color-background-dark: #020617;
+  --color-text: #f1f5f9;
+  --color-text-light: #94a3b8;
+  --color-text-inverse: #0f172a;
+  --color-border: #334155;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
 }
 
 /* ========================================
@@ -238,6 +263,30 @@ p { margin-bottom: var(--spacing-md); }
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-mobile-toggle { display: block; }
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.theme-toggle-icon {
+  font-size: var(--font-size-base);
 }
 
 /* ========================================
