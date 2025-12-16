@@ -83,6 +83,32 @@ export default function Memory() {
         </div>
       </section>
 
+      {/* Parking Lot Notes */}
+      <section className="section section-alt">
+        <div className="container">
+          <h2 className="text-center mb-lg">Capture Ideas Without Losing Focus</h2>
+          <p className="text-center text-light mb-2xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-2xl)' }}>When agents discover something important mid-task, they don&apos;t have to choose between pursuing it and losing context, or ignoring it and losing the insight.</p>
+          <div className="grid grid-3">
+            <div className="card">
+              <h4>Parking Lot Notes</h4>
+              <p>Agents capture ideas, questions, and observations in a structured notes system. Strategic thoughts are preserved for later review without derailing current work.</p>
+            </div>
+            <div className="card">
+              <h4>Categorized &amp; Searchable</h4>
+              <p>Notes are tagged by type&mdash;IDEA, QUESTION, STRATEGIC, TECHNICAL, PROCESS&mdash;and searchable by tag, project, or agent. Nothing gets lost.</p>
+            </div>
+            <div className="card">
+              <h4>Tracked to Resolution</h4>
+              <p>Notes follow a lifecycle: NEW to REVIEWED to ACTIONED, PARKED, or DISMISSED. Assign notes to agents. Full accountability for every captured idea.</p>
+            </div>
+          </div>
+          <div className="card mt-xl" style={{ maxWidth: '700px', margin: 'var(--spacing-xl) auto 0' }}>
+            <h4>Example: Strategic Insight During Implementation</h4>
+            <p className="mb-0">A CODER working on API endpoints notices the architecture could support event sourcing. Instead of stopping to explore or forgetting the insight, they create a STRATEGIC note: &ldquo;Consider event sourcing for state machine.&rdquo; The note persists, gets reviewed by ARCHITECT later, and becomes a future enhancement&mdash;all without interrupting the current sprint.</p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="cta">
         <div className="container">

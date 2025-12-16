@@ -27,7 +27,7 @@ export default function ProductOverview() {
               { icon: '13', title: 'Multi-Agent Orchestration', desc: 'Not one AI doing everything, but 13 specialized agents collaborating. Architects design, coders implement, testers validate, reviewers approve.' },
               { icon: '\u2713', title: 'Complete Accountability', desc: 'Every agent action logged. Every decision traceable. Immutable audit trails meet the strictest compliance requirements.' },
               { icon: '\u2022', title: 'Enterprise Governance', desc: 'Approval workflows, environment separation, and kill switches ensure humans stay in control.' },
-              { icon: '4', title: 'Continuous Memory', desc: 'Four-tier memory model means agents never lose context. Work survives sessions, handoffs, and team changes.' },
+              { icon: '4', title: 'Continuous Memory', desc: 'Four-tier memory model means agents never lose context. Work survives sessions, handoffs, and team changes. Parking lot notes capture ideas without losing focus.' },
               { icon: '22', title: 'Real-Time Visibility', desc: 'Dashboard with 22 views shows everything your AI team is doing. Agent status, work progress, system health.' },
               { icon: '\u2192', title: 'Compliance-Ready', desc: 'Built for regulated industries. SOC 2 alignment, NYDFS 500 considerations, and audit controls designed in from day one.' },
             ].map((feature, i) => (
