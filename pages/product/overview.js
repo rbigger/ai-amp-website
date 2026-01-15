@@ -42,41 +42,75 @@ export default function ProductOverview() {
         </div>
       </section>
 
-      {/* Agent Lifecycle */}
+      {/* Agent Lifecycle - 12 State Machine */}
       <section className="section section-alt">
         <div className="container">
-          <h2 className="text-center mb-lg">Agent Lifecycle</h2>
-          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <Image
-              src="/graphics/agent-lifecycle.png"
-              alt="Agent Lifecycle State Machine showing states: SPAWNED, IDLE, WORKING, BLOCKED, and MEMORY MANAGEMENT"
-              width={800}
-              height={450}
-              style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-            />
-            <p className="text-light mt-md">Every agent follows a defined lifecycle with full audit trails at each transition.</p>
-          </div>
+          <h2 className="text-center mb-lg">Agent Lifecycle State Machine</h2>
+          <p className="text-center text-light mb-xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-xl)' }}>
+            12 states with explicit failure detection, cold storage, and recovery paths. Every transition is audited.
+          </p>
 
-          <div className="grid grid-3 mt-2xl">
+          {/* Normal Lifecycle States */}
+          <h3 className="mb-md">Normal Lifecycle</h3>
+          <div className="grid grid-3 mb-xl">
             <div className="card">
               <h4 style={{ color: '#6b7280' }}>SPAWNED</h4>
-              <p className="text-light mb-0">Agent created but not yet registered. Must complete /checkin before any work. Identity assigned, awaiting role.</p>
+              <p className="text-light mb-0">Record created, JWT issued. Must complete checkin with kernel-verified PID:starttime binding.</p>
             </div>
             <div className="card">
-              <h4 style={{ color: '#16a34a' }}>IDLE</h4>
-              <p className="text-light mb-0">Fully registered and ready for work. Role loaded, context initialized. Waiting for task assignment.</p>
+              <h4 style={{ color: '#16a34a' }}>CHECKED_IN</h4>
+              <p className="text-light mb-0">Process bound, identity verified. Ready for work. Role loaded, context initialized.</p>
             </div>
             <div className="card">
               <h4 style={{ color: '#2563eb' }}>WORKING</h4>
-              <p className="text-light mb-0">Actively executing a task. Progress tracked, outputs logged. Can transition to BLOCKED if stuck.</p>
+              <p className="text-light mb-0">Actively executing task. Progress tracked, outputs logged. All actions audited.</p>
             </div>
             <div className="card">
-              <h4 style={{ color: '#dc2626' }}>BLOCKED</h4>
-              <p className="text-light mb-0">Waiting on external dependency or approval. Escalation triggered. Returns to WORKING when unblocked.</p>
+              <h4 style={{ color: '#7c3aed' }}>COMPACTING</h4>
+              <p className="text-light mb-0">Writing handoff document, preserving context to database before session end.</p>
             </div>
-            <div className="card" style={{ gridColumn: 'span 2' }}>
-              <h4 style={{ color: '#7c3aed' }}>MEMORY MANAGEMENT</h4>
-              <p className="text-light mb-0">Saving or restoring agent context. Handles /handoff (save state before shutdown) and /recover (restore state on restart). Ensures continuity across sessions.</p>
+            <div className="card">
+              <h4 style={{ color: '#8b5cf6' }}>COMPACTED</h4>
+              <p className="text-light mb-0">Context preserved. Ready to release binding and go OFFLINE or enter HIBERNATING.</p>
+            </div>
+            <div className="card">
+              <h4 style={{ color: '#64748b' }}>OFFLINE</h4>
+              <p className="text-light mb-0">No process bound. Record exists. Ready for recovery with new JWT and process binding.</p>
+            </div>
+          </div>
+
+          {/* Cold Storage */}
+          <h3 className="mb-md">Cold Storage</h3>
+          <div className="grid grid-3 mb-xl">
+            <div className="card" style={{ gridColumn: 'span 3' }}>
+              <h4 style={{ color: '#0ea5e9' }}>HIBERNATING</h4>
+              <p className="text-light mb-0">Long-term cold storage for agents needed periodically (weekly/monthly). Full context preserved. Not subject to failure detection. Revive with new JWT when needed.</p>
+            </div>
+          </div>
+
+          {/* Failure States */}
+          <h3 className="mb-md">Failure Detection</h3>
+          <div className="grid grid-3 mb-xl">
+            <div className="card">
+              <h4 style={{ color: '#f59e0b' }}>ABANDONED</h4>
+              <p className="text-light mb-0">Spawn initiated but checkin never completed. Detected by Reaper after timeout threshold.</p>
+            </div>
+            <div className="card">
+              <h4 style={{ color: '#f97316' }}>UNRESPONSIVE</h4>
+              <p className="text-light mb-0">Was active but heartbeat stopped. Process may be hung. RESCUE agent can intervene.</p>
+            </div>
+            <div className="card">
+              <h4 style={{ color: '#dc2626' }}>CRASHED</h4>
+              <p className="text-light mb-0">Process confirmed gone. Binding invalidated. Ready for cleanup and re-spawn decision.</p>
+            </div>
+          </div>
+
+          {/* Terminal State */}
+          <h3 className="mb-md">Terminal</h3>
+          <div className="grid grid-3">
+            <div className="card">
+              <h4 style={{ color: '#1f2937' }}>DECOMMISSIONED</h4>
+              <p className="text-light mb-0">Permanently removed. No recovery possible. Audit trail retained for compliance.</p>
             </div>
           </div>
         </div>
@@ -182,6 +216,87 @@ export default function ProductOverview() {
               height={500}
               style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Security Architecture */}
+      <section className="section section-alt">
+        <div className="container">
+          <h2 className="text-center mb-lg">Defense-in-Depth Security</h2>
+          <p className="text-center text-light mb-xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-xl)' }}>
+            Four layers of authorization. Kernel-verified identity. Row-level isolation. Every decision audited.
+          </p>
+
+          {/* Trust Boundary */}
+          <div className="grid grid-2 mb-xl">
+            <div className="card">
+              <h4>Infrastructure Layer</h4>
+              <p className="text-light mb-0">Orchestrator, Reaper, and MCP Server have direct database access with dedicated credentials. Each component isolated with own PostgreSQL role.</p>
+            </div>
+            <div className="card">
+              <h4>Agent Layer</h4>
+              <p className="text-light mb-0">Agents access database only through MCP with kernel-verified identity. PID:starttime binding is unforgeable. No direct DB credentials.</p>
+            </div>
+          </div>
+
+          {/* Security Features */}
+          <div className="grid grid-4">
+            <div className="card text-center">
+              <h4>Row-Level Security</h4>
+              <p className="text-light mb-0">Agents can only see their own data. PostgreSQL RLS enforced at query level.</p>
+            </div>
+            <div className="card text-center">
+              <h4>Identity Binding</h4>
+              <p className="text-light mb-0">PID:starttime verified by kernel via SO_PEERCRED. Cannot be spoofed by agents.</p>
+            </div>
+            <div className="card text-center">
+              <h4>JWT Versioning</h4>
+              <p className="text-light mb-0">Each JWT has version counter. Replay attacks blocked. Old tokens rejected.</p>
+            </div>
+            <div className="card text-center">
+              <h4>Session Isolation</h4>
+              <p className="text-light mb-0">SET LOCAL auto-resets on commit. No cross-transaction leakage in connection pools.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Infrastructure Components */}
+      <section className="section">
+        <div className="container">
+          <h2 className="text-center mb-lg">Infrastructure Components</h2>
+          <p className="text-center text-light mb-xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-xl)' }}>
+            Three infrastructure services manage agent lifecycle. Agents cannot impersonate infrastructure.
+          </p>
+
+          <div className="grid grid-3">
+            <div className="card">
+              <h4>Orchestrator</h4>
+              <p className="text-light">Creates agents, generates JWTs, spawns processes. Detects crashed processes via reconciliation. Makes decommission decisions.</p>
+              <p className="text-light mb-0" style={{ fontSize: '0.875rem', color: '#6b7280' }}>Role: orchestrator_app</p>
+            </div>
+            <div className="card">
+              <h4>Reaper</h4>
+              <p className="text-light">Detects orphaned agents (SPAWNED too long). Monitors heartbeats. Marks agents ABANDONED or UNRESPONSIVE.</p>
+              <p className="text-light mb-0" style={{ fontSize: '0.875rem', color: '#6b7280' }}>Role: reaper_app</p>
+            </div>
+            <div className="card">
+              <h4>MCP Server</h4>
+              <p className="text-light">Verifies agent identity via PID:starttime. Binds sessions. Enforces authorization on every call. Sets agent context for RLS.</p>
+              <p className="text-light mb-0" style={{ fontSize: '0.875rem', color: '#6b7280' }}>Role: mcp_server_app</p>
+            </div>
+          </div>
+
+          <div className="grid grid-2 mt-lg">
+            <div className="card">
+              <h4>RESCUE Agent</h4>
+              <p className="text-light mb-0">Privileged agent role that can force_checkout UNRESPONSIVE agents. Only cross-agent operation allowed. Authorization checked in function, not role.</p>
+            </div>
+            <div className="card">
+              <h4>Standard Agents</h4>
+              <p className="text-light mb-0">CODER, ARCHITECT, ANALYST, etc. Can only modify their own state. Self-modification rule: caller_guid must equal target_guid.</p>
+            </div>
           </div>
         </div>
       </section>
