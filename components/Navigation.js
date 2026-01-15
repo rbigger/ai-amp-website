@@ -6,16 +6,34 @@ import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   const [user, setUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
     const supabase = createClient();
+
+    const fetchUserAndProfile = async (currentUser) => {
+      if (currentUser) {
+        const { data } = await supabase
+          .from('user_profiles')
+          .select('role')
+          .eq('id', currentUser.id)
+          .single();
+        setProfile(data);
+      } else {
+        setProfile(null);
+      }
+    };
+
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
+      fetchUserAndProfile(user);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
+      const currentUser = session?.user ?? null;
+      setUser(currentUser);
+      fetchUserAndProfile(currentUser);
     });
 
     return () => subscription.unsubscribe();
@@ -56,7 +74,10 @@ export default function Navigation() {
           <li><ThemeToggle /></li>
           {user ? (
             <>
-              {user.email === 'roger@discoverie.us' && (
+              {(profile?.role === 'collaborator' || profile?.role === 'admin') && (
+                <li><Link href="/collab">Workspace</Link></li>
+              )}
+              {profile?.role === 'admin' && (
                 <li className="nav-dropdown">
                   <Link href="/admin/approvals">Admin</Link>
                   <div className="nav-dropdown-content">
