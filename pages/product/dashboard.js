@@ -92,10 +92,10 @@ export default function Dashboard() {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>See the Dashboard Live</h2>
-          <p>The best way to understand AI-AMP&apos;s visibility is to see it in action. Request a demo and we&apos;ll walk you through every view.</p>
+          <h2>What Do You Think?</h2>
+          <p>We&apos;re building AI-AMP for enterprise teams. Your feedback shapes what we build next.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/demo-request" className="btn btn-primary btn-large">Request Demo</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>

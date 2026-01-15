@@ -13,7 +13,7 @@ export default function Enterprise() {
           <h1>Enterprise AI Development<br />with Accountability</h1>
           <p>AI-AMP brings governance, visibility, and control to AI-assisted development. Scale AI across your engineering organization without sacrificing oversight.</p>
           <div className="btn-group" style={{ marginTop: 'var(--spacing-xl)' }}>
-            <Link href="/demo-request" className="btn btn-primary btn-large">Request Demo</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>
@@ -34,7 +34,7 @@ export default function Enterprise() {
             <div className="card" style={{ backgroundColor: 'var(--color-background-alt)' }}>
               <h4>The AI-AMP Approach</h4>
               <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem' }}>
-                <li><strong>Multi-Agent Orchestration</strong><br />13 specialized agents working as a team</li>
+                <li><strong>Multi-Agent Orchestration</strong><br />15 specialized agents working as a team</li>
                 <li><strong>Built-In Governance</strong><br />Approval workflows and audit trails by design</li>
                 <li><strong>Complete Visibility</strong><br />Real-time dashboard with 22 views</li>
                 <li><strong>Enterprise Integration</strong><br />Connects to your existing tools</li>
@@ -50,10 +50,10 @@ export default function Enterprise() {
           <h2 className="text-center mb-2xl">Enterprise Capabilities</h2>
           <div className="grid grid-2">
             {[
-              { title: 'Governance & Control', items: ['Role-Based Access - 13 agent roles with defined boundaries', 'Approval Workflows - Multi-party gates for sensitive operations', 'Environment Separation - Dev/staging/prod isolation', 'Kill Switches - Immediate agent termination'] },
-              { title: 'Visibility & Monitoring', items: ['Real-Time Dashboard - 22 views for complete visibility', 'Agent Status - Active, working, blocked, idle', 'Work Tracking - Tickets, kanban, progress', 'System Health - Performance metrics and alerts'] },
-              { title: 'Traceability & Compliance', items: ['Audit Trails - Every action logged, immutable', 'Traceability Chain - Vision → Ticket → Test', 'Decision Records - What and why captured'] },
-              { title: 'Continuity & Reliability', items: ['Four-Tier Memory - Context survives sessions', 'Handoff System - Structured context transfer', 'Recovery - Restore from any handoff'] },
+              { title: 'Governance & Control', items: ['Decision Scopes - Each role knows what it can decide vs escalate', 'Independent Verification - ARCHITECT verifies CODER work before approval', 'Escalation Paths - Clear routing to ARCHITECT, USER, or CISO', 'No Self-Approval - Agents cannot approve their own work'] },
+              { title: 'Security & Compliance', items: ['CISO Agent - Vulnerability classification, incident response', 'COMPLIANCE Agent - Evidence collection, traceability matrices', 'SEV Classification - SEV0-3 with defined SLAs and authority', 'Audit-Ready - Regulation → Requirement → Code → Test → Evidence'] },
+              { title: 'Quality Engineering', items: ['TDD Mandatory - CODER writes tests FIRST, 0 errors before handoff', 'TESTER Agent - Executes tests, documents with evidence', 'REVIEWER Agent - Never rubber-stamps, checks security', 'DEVOPS Agent - Monitors daemon health, generates reports'] },
+              { title: 'Resilience & Recovery', items: ['RESCUER Agent - Reconstructs crashed agent context', 'Synthetic Handoffs - Recovery from session artifacts', 'Confidence Scoring - Validates rescue quality', 'Crash Recovery - No context lost, seamless continuation'] },
             ].map((section, i) => (
               <div key={i} className="card">
                 <h3>{section.title}</h3>
@@ -71,11 +71,11 @@ export default function Enterprise() {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>See AI-AMP for Enterprise</h2>
-          <p>Schedule a demo to see how AI-AMP brings governance and visibility to AI development at enterprise scale.</p>
+          <h2>What Do You Think?</h2>
+          <p>We&apos;re building AI-AMP for enterprise teams. Your feedback shapes what we build next.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/demo-request" className="btn btn-primary btn-large">Request Demo</Link>
-            <Link href="/contact-sales" className="btn btn-secondary btn-large" style={{ borderColor: 'white', color: 'white' }}>Contact Sales</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
+            
           </div>
         </div>
       </section>

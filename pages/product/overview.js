@@ -14,7 +14,7 @@ export default function ProductOverview() {
           <h1>The AI Development Platform for Enterprise Teams</h1>
           <p>AI-AMP orchestrates specialized AI agents working as a coordinated team&mdash;with the governance, visibility, and compliance controls enterprise teams require.</p>
           <div className="btn-group" style={{ marginTop: 'var(--spacing-xl)' }}>
-            <Link href="/survey" className="btn btn-primary btn-large">Share Your Feedback</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>
@@ -307,7 +307,7 @@ export default function ProductOverview() {
           <h2>What Do You Think?</h2>
           <p>We&apos;re building AI-AMP for enterprise teams. Your feedback shapes what we build next.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/survey" className="btn btn-primary btn-large">Share Your Feedback</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>

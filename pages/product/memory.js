@@ -112,10 +112,10 @@ export default function Memory() {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>See Continuous Memory in Action</h2>
-          <p>Watch how AI-AMP agents maintain context across sessions and handoffs. Schedule a demo to see the four-tier memory model at work.</p>
+          <h2>What Do You Think?</h2>
+          <p>We&apos;re building AI-AMP for enterprise teams. Your feedback shapes what we build next.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/demo-request" className="btn btn-primary btn-large">Request Demo</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>

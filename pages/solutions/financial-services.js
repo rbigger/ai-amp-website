@@ -13,7 +13,7 @@ export default function FinancialServices() {
           <h1>AI Development That Banks Can Trust</h1>
           <p>AI-AMP delivers the compliance controls, audit trails, and governance that financial institutions require. Build faster without compromising on regulatory obligations.</p>
           <div className="btn-group" style={{ marginTop: 'var(--spacing-xl)' }}>
-            <Link href="/contact-sales" className="btn btn-primary btn-large">Schedule Consultation</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function FinancialServices() {
                 <tr><th>Criteria</th><th>AI-AMP Capability</th></tr>
               </thead>
               <tbody>
-                <tr><td>CC6.1 - Logical Access</td><td>Role-based access with 13 defined roles</td></tr>
+                <tr><td>CC6.1 - Logical Access</td><td>Role-based access with 15 defined roles, each with decision scopes</td></tr>
                 <tr><td>CC6.2 - Access Removal</td><td>Agent lifecycle management</td></tr>
                 <tr><td>CC7.1 - Configuration</td><td>Environment separation, change tracking</td></tr>
                 <tr><td>CC7.2 - Change Management</td><td>Multi-party approval workflows</td></tr>
@@ -71,7 +71,7 @@ export default function FinancialServices() {
                 <tr><td>500.7</td><td>Access Privileges</td><td>Least privilege, role-based</td></tr>
                 <tr><td>500.9</td><td>Testing</td><td>TESTER agent, test management</td></tr>
                 <tr><td>500.13</td><td>Asset Inventory</td><td>Complete agent tracking</td></tr>
-                <tr><td>500.16</td><td>Incident Response</td><td>Kill switches, audit correlation</td></tr>
+                <tr><td>500.16</td><td>Incident Response</td><td>CISO agent with SEV0-3 classification, escalation paths</td></tr>
               </tbody>
             </table>
           </div>
@@ -86,10 +86,10 @@ export default function FinancialServices() {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>Let&apos;s Discuss Your Compliance Requirements</h2>
-          <p>Every financial institution has unique regulatory obligations. Schedule a consultation to discuss how AI-AMP maps to your specific requirements.</p>
+          <h2>What Do You Think?</h2>
+          <p>We&apos;re building AI-AMP for enterprise teams. Your feedback shapes what we build next.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/contact-sales" className="btn btn-primary btn-large">Schedule Compliance Consultation</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>

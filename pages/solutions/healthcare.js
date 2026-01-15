@@ -13,7 +13,7 @@ export default function Healthcare() {
           <h1>AI Development for Healthcare</h1>
           <p>AI-AMP provides the audit trails, access controls, and change management that healthcare organizations need. Accelerate development while maintaining HIPAA alignment.</p>
           <div className="btn-group" style={{ marginTop: 'var(--spacing-xl)' }}>
-            <Link href="/contact-sales" className="btn btn-primary btn-large">Schedule Consultation</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>
@@ -64,10 +64,10 @@ export default function Healthcare() {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>Discuss Your Healthcare Development Needs</h2>
-          <p>Healthcare organizations have unique compliance requirements. Let&apos;s discuss how AI-AMP can support your development workflow.</p>
+          <h2>What Do You Think?</h2>
+          <p>We&apos;re building AI-AMP for enterprise teams. Your feedback shapes what we build next.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/contact-sales" className="btn btn-primary btn-large">Schedule Healthcare Consultation</Link>
+            <Link href="/survey" className="btn btn-primary btn-large">Talk With Us</Link>
           </div>
         </div>
       </section>
