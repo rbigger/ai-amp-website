@@ -13,6 +13,7 @@ export default function DocumentView() {
   const [loading, setLoading] = useState(true);
   const [newNote, setNewNote] = useState('');
   const [submittingNote, setSubmittingNote] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -84,6 +85,29 @@ export default function DocumentView() {
     });
   };
 
+  const handleDelete = async () => {
+    if (!confirm('Are you sure you want to delete this document? This will also delete all notes.')) {
+      return;
+    }
+
+    setDeleting(true);
+    try {
+      const res = await fetch(`/api/collab/documents/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (res.ok) {
+        router.push('/collab');
+      } else {
+        const data = await res.json();
+        alert(`Error: ${data.error}`);
+      }
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
+    setDeleting(false);
+  };
+
   if (loading) {
     return (
       <Layout title="Loading..." description="Loading document">
@@ -121,9 +145,19 @@ export default function DocumentView() {
               </Link>
               <h1>{doc.title}</h1>
             </div>
-            <Link href={`/collab/${id}/edit`} className="btn btn-primary">
-              Edit Document
-            </Link>
+            <div style={{ display: 'flex', gap: 'var(--spacing-sm)' }}>
+              <Link href={`/collab/${id}/edit`} className="btn btn-primary">
+                Edit Document
+              </Link>
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className="btn btn-secondary"
+                style={{ backgroundColor: '#dc2626', borderColor: '#dc2626', color: 'white' }}
+              >
+                {deleting ? 'Deleting...' : 'Delete'}
+              </button>
+            </div>
           </div>
 
           {/* Main Content */}

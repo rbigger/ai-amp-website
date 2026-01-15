@@ -7,6 +7,7 @@ export default function CollabIndex() {
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [newTitle, setNewTitle] = useState('');
 
   useEffect(() => {
@@ -62,6 +63,35 @@ export default function CollabIndex() {
     });
   };
 
+  const handleUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/collab/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.document) {
+        setDocuments([data.document, ...documents]);
+      } else {
+        alert(`Error: ${data.error}`);
+      }
+    } catch (err) {
+      alert(`Error: ${err.message}`);
+    }
+
+    setUploading(false);
+    e.target.value = ''; // Reset file input
+  };
+
   return (
     <Layout title="Workspace" description="Collaboration workspace for documents">
       <section className="section">
@@ -90,6 +120,33 @@ export default function CollabIndex() {
                 {creating ? 'Creating...' : 'Create'}
               </button>
             </form>
+
+            <div style={{ marginTop: 'var(--spacing-lg)', paddingTop: 'var(--spacing-lg)', borderTop: '1px solid var(--color-border)' }}>
+              <h4 style={{ marginBottom: 'var(--spacing-sm)' }}>Or Upload a File</h4>
+              <p className="text-light" style={{ fontSize: '0.9rem', marginBottom: 'var(--spacing-md)' }}>
+                Upload .md, .txt, or other files. Text files will be imported as document content.
+              </p>
+              <label
+                style={{
+                  display: 'inline-block',
+                  padding: 'var(--spacing-sm) var(--spacing-md)',
+                  backgroundColor: 'var(--color-bg-alt)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--border-radius)',
+                  cursor: uploading ? 'not-allowed' : 'pointer',
+                  opacity: uploading ? 0.6 : 1
+                }}
+              >
+                {uploading ? 'Uploading...' : 'Choose File'}
+                <input
+                  type="file"
+                  onChange={handleUpload}
+                  disabled={uploading}
+                  accept=".md,.markdown,.txt,.text,.pdf,.doc,.docx"
+                  style={{ display: 'none' }}
+                />
+              </label>
+            </div>
           </div>
 
           {/* Document List */}
