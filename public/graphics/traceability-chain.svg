@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, sans-serif; font-size: 24px; font-weight: 600; fill: #1a365d; }
+      .box-label { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: white; }
+      .box-sublabel { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; fill: white; opacity: 0.85; }
+      .arrow { fill: none; stroke: #0d9488; stroke-width: 3; marker-end: url(#arrowhead); }
+      .audit-text { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #64748b; }
+      .audit-title { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #1a365d; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0d9488"/>
+    </marker>
+    <linearGradient id="boxGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a365d"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="400" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" class="title">Traceability Chain: Vision to Evidence</text>
+
+  <!-- Flow boxes -->
+  <!-- Vision -->
+  <rect x="50" y="100" width="120" height="70" rx="8" fill="url(#boxGradient)"/>
+  <text x="110" y="135" text-anchor="middle" class="box-label">Vision</text>
+  <text x="110" y="152" text-anchor="middle" class="box-sublabel">Strategic goal</text>
+
+  <!-- Use Case -->
+  <rect x="220" y="100" width="120" height="70" rx="8" fill="url(#boxGradient)"/>
+  <text x="280" y="135" text-anchor="middle" class="box-label">Use Case</text>
+  <text x="280" y="152" text-anchor="middle" class="box-sublabel">User story</text>
+
+  <!-- Ticket -->
+  <rect x="390" y="100" width="120" height="70" rx="8" fill="url(#boxGradient)"/>
+  <text x="450" y="135" text-anchor="middle" class="box-label">Ticket</text>
+  <text x="450" y="152" text-anchor="middle" class="box-sublabel">Work item</text>
+
+  <!-- Test -->
+  <rect x="560" y="100" width="120" height="70" rx="8" fill="url(#boxGradient)"/>
+  <text x="620" y="135" text-anchor="middle" class="box-label">Test</text>
+  <text x="620" y="152" text-anchor="middle" class="box-sublabel">Verification</text>
+
+  <!-- Evidence -->
+  <rect x="730" y="100" width="120" height="70" rx="8" fill="#16a34a"/>
+  <text x="790" y="135" text-anchor="middle" class="box-label">Evidence</text>
+  <text x="790" y="152" text-anchor="middle" class="box-sublabel">Proof of work</text>
+
+  <!-- Arrows between boxes -->
+  <path d="M 170 135 L 210 135" class="arrow"/>
+  <path d="M 340 135 L 380 135" class="arrow"/>
+  <path d="M 510 135 L 550 135" class="arrow"/>
+  <path d="M 680 135 L 720 135" class="arrow"/>
+
+  <!-- Audit Trail bar -->
+  <rect x="50" y="210" width="800" height="50" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="450" y="240" text-anchor="middle" class="audit-title">Complete Audit Trail</text>
+
+  <!-- Vertical connectors from boxes to audit trail -->
+  <line x1="110" y1="170" x2="110" y2="210" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="280" y1="170" x2="280" y2="210" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="450" y1="170" x2="450" y2="210" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="620" y1="170" x2="620" y2="210" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4"/>
+  <line x1="790" y1="170" x2="790" y2="210" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="4"/>
+
+  <!-- Detail boxes below -->
+  <g transform="translate(50, 290)">
+    <rect x="0" y="0" width="150" height="80" fill="#eff6ff" rx="6"/>
+    <text x="75" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1a365d">Every Link Tracked</text>
+    <text x="75" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Vision ID, Use Case ID,</text>
+    <text x="75" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Ticket ID all connected</text>
+  </g>
+
+  <g transform="translate(220, 290)">
+    <rect x="0" y="0" width="150" height="80" fill="#f0fdf4" rx="6"/>
+    <text x="75" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1a365d">Agent Attribution</text>
+    <text x="75" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Who did what, when,</text>
+    <text x="75" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">and why</text>
+  </g>
+
+  <g transform="translate(390, 290)">
+    <rect x="0" y="0" width="150" height="80" fill="#fefce8" rx="6"/>
+    <text x="75" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1a365d">Immutable History</text>
+    <text x="75" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Corrections create</text>
+    <text x="75" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">new records</text>
+  </g>
+
+  <g transform="translate(560, 290)">
+    <rect x="0" y="0" width="150" height="80" fill="#fdf2f8" rx="6"/>
+    <text x="75" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1a365d">Audit Ready</text>
+    <text x="75" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">SOC 2, HIPAA,</text>
+    <text x="75" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">regulatory compliance</text>
+  </g>
+
+  <g transform="translate(730, 290)">
+    <rect x="0" y="0" width="120" height="80" fill="#f0fdfa" rx="6"/>
+    <text x="60" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1a365d">Queryable</text>
+    <text x="60" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">SQL access to</text>
+    <text x="60" y="58" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">full chain</text>
+  </g>
+</svg>
