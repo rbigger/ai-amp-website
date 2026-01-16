@@ -70,29 +70,27 @@ export default function ResearchWorkspace() {
             <h1>Research Workspace</h1>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p>From idea to draft, with literature validation at every step. A structured workflow for academic writing that integrates co-citation analysis where you need it most.</p>
+            <p>Structured workflow for academic writing with co-citation analysis at every stage.</p>
           </FadeIn>
           <FadeIn delay={0.2}>
             <div className="btn-group" style={{ marginTop: 'var(--spacing-xl)' }}>
-              <Link href="/login?redirect=/research-workspace/projects" className="btn btn-primary btn-large" style={{ backgroundColor: 'white', color: '#0d9488' }}>Get Started</Link>
-              <Link href="#workflow" className="btn btn-secondary btn-large" style={{ borderColor: 'white', color: 'white' }}>See How It Works</Link>
+              <Link href="/research-workspace/projects" className="btn btn-primary btn-large" style={{ backgroundColor: 'white', color: '#0d9488' }}>Open Workspace</Link>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* Problem Statement */}
+      {/* Overview */}
       <section className="section">
         <div className="container">
           <FadeIn>
-            <h2 className="text-center mb-lg">The Challenge of Academic Writing</h2>
+            <h2 className="text-center mb-lg">How It Works</h2>
           </FadeIn>
           <div className="grid grid-2" style={{ alignItems: 'center' }}>
             <FadeIn delay={0.1} direction="left">
               <div>
-                <p>Academic writing tools treat citations as an afterthought. You write first, then scramble to find supporting literature.</p>
-                <p>But research thinking is iterative. Claims need validation. Literature informs direction. The best papers are built on solid foundations.</p>
-                <h4 className="mt-lg mb-sm">Research Workspace provides:</h4>
+                <p>Research Workspace integrates literature validation into the writing process. Claims are tracked as evidence emerges, and co-citation analysis surfaces relevant references at each stage.</p>
+                <h4 className="mt-lg mb-sm">Key capabilities:</h4>
                 <ul style={{ listStyle: 'disc', paddingLeft: '1.5rem' }}>
                   <li>Claims as first-class objects with status tracking</li>
                   <li>Co-citation analysis at every workflow stage</li>
@@ -264,7 +262,7 @@ export default function ResearchWorkspace() {
       <section className="section section-alt">
         <div className="container">
           <FadeIn>
-            <h2 className="text-center mb-lg">Built for Researchers</h2>
+            <h2 className="text-center mb-lg">Features</h2>
           </FadeIn>
           <StaggerContainer className="grid grid-3">
             <StaggerItem>
@@ -311,14 +309,11 @@ export default function ResearchWorkspace() {
       <section className="cta" style={{ background: 'linear-gradient(135deg, #0d9488 0%, #14b8a6 100%)' }}>
         <div className="container">
           <FadeIn>
-            <h2>Start Your Research Project</h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p>From initial idea to polished draft. Validate your claims with literature at every step.</p>
+            <h2>Ready to Begin?</h2>
           </FadeIn>
           <FadeIn delay={0.2}>
             <div className="btn-group" style={{ justifyContent: 'center' }}>
-              <Link href="/login?redirect=/research-workspace/projects" className="btn btn-primary btn-large" style={{ backgroundColor: 'white', color: '#0d9488' }}>Get Started Free</Link>
+              <Link href="/research-workspace/projects" className="btn btn-primary btn-large" style={{ backgroundColor: 'white', color: '#0d9488' }}>Go to Projects</Link>
             </div>
           </FadeIn>
         </div>
