@@ -2,13 +2,26 @@ import { updateSession } from '@/lib/supabase/middleware';
 import { NextResponse } from 'next/server';
 
 export async function middleware(request) {
-  const { response, user, supabase } = await updateSession(request);
-
   const { pathname } = request.nextUrl;
+
+  // Marketing/public pages that don't require auth - check BEFORE Supabase call
+  const marketingRoutes = ['/', '/about', '/pricing', '/product', '/solutions', '/terms', '/privacy', '/survey', '/thank-you', '/research-workspace'];
+  const isMarketingRoute = marketingRoutes.some(route => pathname === route || (route !== '/' && pathname.startsWith(route + '/')));
+
+  if (isMarketingRoute) {
+    return NextResponse.next();
+  }
 
   // Public routes that don't require auth
   const publicRoutes = ['/login', '/signup', '/pending-approval', '/forgot-password', '/set-password', '/api/auth', '/api/newsletter', '/api/health', '/api/invite', '/api/collab/agent'];
   const isPublicRoute = publicRoutes.some(route => pathname.startsWith(route));
+
+  if (isPublicRoute) {
+    return NextResponse.next();
+  }
+
+  // Now call Supabase for authenticated routes
+  const { response, user, supabase } = await updateSession(request);
 
   // Admin routes - require auth but skip approval check
   const adminRoutes = ['/admin', '/api/admin'];
@@ -17,11 +30,6 @@ export async function middleware(request) {
   // Collab routes - require collaborator or admin role
   const collabRoutes = ['/collab', '/api/collab'];
   const isCollabRoute = collabRoutes.some(route => pathname.startsWith(route)) && !pathname.startsWith('/api/collab/agent');
-
-  // Allow public routes
-  if (isPublicRoute) {
-    return response;
-  }
 
   // Redirect to login if not authenticated
   if (!user) {
