@@ -56,6 +56,7 @@ export default function Navigation() {
             <Link href="/product/overview">Product</Link>
             <div className="nav-dropdown-content">
               <Link href="/product/overview">Overview</Link>
+              <Link href="/product/use-cases">Use Cases</Link>
               <Link href="/product/agent-roles">Agent Roles</Link>
               <Link href="/product/compliance">Compliance</Link>
               <Link href="/product/dashboard">Dashboard</Link>
