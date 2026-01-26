@@ -93,7 +93,7 @@ export default function ProductOverview() {
           <div className="grid grid-3 mb-xl">
             <div className="card">
               <h4 style={{ color: '#f59e0b' }}>ABANDONED</h4>
-              <p className="text-light mb-0">Spawn initiated but checkin never completed. Detected by Reaper after timeout threshold.</p>
+              <p className="text-light mb-0">Spawn initiated but checkin never completed. Detected by Gardener after timeout threshold.</p>
             </div>
             <div className="card">
               <h4 style={{ color: '#f97316' }}>UNRESPONSIVE</h4>
@@ -232,7 +232,7 @@ export default function ProductOverview() {
           <div className="grid grid-2 mb-xl">
             <div className="card">
               <h4>Infrastructure Layer</h4>
-              <p className="text-light mb-0">Orchestrator, Reaper, and MCP Server have direct database access with dedicated credentials. Each component isolated with own PostgreSQL role.</p>
+              <p className="text-light mb-0">Orchestrator, Gardener, and MCP Server have direct database access with dedicated credentials. Each component isolated with own PostgreSQL role.</p>
             </div>
             <div className="card">
               <h4>Agent Layer</h4>
@@ -277,9 +277,9 @@ export default function ProductOverview() {
               <p className="text-light mb-0" style={{ fontSize: '0.875rem', color: '#6b7280' }}>Role: orchestrator_app</p>
             </div>
             <div className="card">
-              <h4>Reaper</h4>
-              <p className="text-light">Detects orphaned agents (SPAWNED too long). Monitors heartbeats. Marks agents ABANDONED or UNRESPONSIVE.</p>
-              <p className="text-light mb-0" style={{ fontSize: '0.875rem', color: '#6b7280' }}>Role: reaper_app</p>
+              <h4>Gardener</h4>
+              <p className="text-light">Detects orphaned agents (SPAWNED too long). Monitors heartbeats. Marks agents ABANDONED or UNRESPONSIVE. Prunes stale sessions.</p>
+              <p className="text-light mb-0" style={{ fontSize: '0.875rem', color: '#6b7280' }}>Role: gardener_app</p>
             </div>
             <div className="card">
               <h4>MCP Server</h4>
