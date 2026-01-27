@@ -1,0 +1,897 @@
+openapi: 3.0.3
+info:
+  title: AI-AMP Website API
+  description: |
+    API for the AI-AMP (AI Agent Management Platform) marketing website.
+
+    ## Authentication
+
+    Most endpoints require authentication via Supabase Auth (cookie-based sessions).
+    Agent endpoints use Bearer token authentication with API keys.
+
+    ## Base URL
+
+    Production: `https://ai-agent-management-platform.com/api`
+  version: 1.0.0
+  contact:
+    name: AI-AMP Team
+    email: roger@discoverie.us
+  license:
+    name: Proprietary
+
+servers:
+  - url: https://ai-agent-management-platform.com/api
+    description: Production
+  - url: http://localhost:3000/api
+    description: Development
+
+tags:
+  - name: Health
+    description: Health check endpoints
+  - name: Authentication
+    description: User authentication
+  - name: Survey
+    description: User feedback survey
+  - name: Newsletter
+    description: Newsletter subscription
+  - name: Admin
+    description: Admin-only operations (requires admin role)
+  - name: Invites
+    description: Invite code management
+  - name: Collaboration
+    description: Document collaboration workspace
+  - name: Agent API
+    description: API endpoints for AI agents (Bearer token auth)
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Health check
+      description: Returns service health status
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+  /auth/callback:
+    get:
+      tags: [Authentication]
+      summary: OAuth callback
+      description: Handles OAuth callback and exchanges code for session
+      parameters:
+        - name: code
+          in: query
+          required: true
+          schema:
+            type: string
+          description: OAuth authorization code
+      responses:
+        '302':
+          description: Redirect to home page
+
+  /auth/logout:
+    post:
+      tags: [Authentication]
+      summary: Logout
+      description: Signs out the current user
+      responses:
+        '302':
+          description: Redirect to login page
+
+  /survey/submit:
+    post:
+      tags: [Survey]
+      summary: Submit survey response
+      description: Submits user feedback survey and sends email notification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SurveySubmission'
+      responses:
+        '200':
+          description: Survey submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyResponse'
+        '400':
+          description: Missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Method not allowed
+
+  /newsletter/subscribe:
+    post:
+      tags: [Newsletter]
+      summary: Subscribe to newsletter
+      description: Adds email to newsletter list and sends welcome email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email]
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: user@example.com
+      responses:
+        '200':
+          description: Subscribed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsletterResponse'
+        '400':
+          description: Invalid email or already subscribed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /admin/pending:
+    get:
+      tags: [Admin]
+      summary: Get pending approvals
+      description: Returns list of users awaiting approval (admin only)
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: List of pending approvals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pending:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PendingUser'
+        '403':
+          description: Forbidden - not admin
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /admin/approve:
+    post:
+      tags: [Admin]
+      summary: Approve user
+      description: Approves a pending user and triggers password reset email (admin only)
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userId]
+              properties:
+                userId:
+                  type: string
+                  format: uuid
+                  description: User ID to approve
+      responses:
+        '200':
+          description: User approved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApproveResponse'
+        '400':
+          description: Missing userId
+        '403':
+          description: Forbidden - not admin
+
+  /admin/update-role:
+    post:
+      tags: [Admin]
+      summary: Update user role
+      description: Changes a user's role (admin only)
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userId, role]
+              properties:
+                userId:
+                  type: string
+                  format: uuid
+                role:
+                  type: string
+                  enum: [user, collaborator, admin]
+      responses:
+        '200':
+          description: Role updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Invalid role or missing fields
+        '403':
+          description: Forbidden - not admin
+
+  /admin/invite:
+    get:
+      tags: [Admin]
+      summary: List invites
+      description: Returns all invite codes (admin only)
+      security:
+        - cookieAuth: []
+      responses:
+        '200':
+          description: List of invites
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invites:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Invite'
+        '403':
+          description: Forbidden - not admin
+
+    post:
+      tags: [Admin]
+      summary: Create invite
+      description: Creates a new invite code (admin only)
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: Pre-fill email (optional)
+                notes:
+                  type: string
+                  description: Admin notes about the invite
+                sendEmail:
+                  type: boolean
+                  default: true
+                  description: Send invite email if email is provided
+      responses:
+        '200':
+          description: Invite created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteCreateResponse'
+        '403':
+          description: Forbidden - not admin
+
+    delete:
+      tags: [Admin]
+      summary: Delete invite
+      description: Revokes an invite code (admin only)
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [id]
+              properties:
+                id:
+                  type: integer
+                  description: Invite ID to delete
+      responses:
+        '200':
+          description: Invite deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          description: Missing id
+        '403':
+          description: Forbidden - not admin
+
+  /invite/validate:
+    post:
+      tags: [Invites]
+      summary: Validate invite token
+      description: Checks if an invite token is valid, unused, and not expired
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token]
+              properties:
+                token:
+                  type: string
+                  description: Invite token to validate
+      responses:
+        '200':
+          description: Validation result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InviteValidation'
+
+  /invite/use:
+    post:
+      tags: [Invites]
+      summary: Use invite token
+      description: Marks an invite as used after signup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token, userId]
+              properties:
+                token:
+                  type: string
+                userId:
+                  type: string
+                  format: uuid
+      responses:
+        '200':
+          description: Invite marked as used
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          description: Already used or invalid
+
+  /collab/upload:
+    post:
+      tags: [Collaboration]
+      summary: Upload document
+      description: Uploads a file and creates a document (collaborator/admin only)
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file]
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: File to upload (max 10MB)
+      responses:
+        '201':
+          description: Document created from file
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentCreateResponse'
+        '400':
+          description: No file uploaded
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden - not collaborator/admin
+
+  /collab/documents/{id}:
+    get:
+      tags: [Collaboration]
+      summary: Get document
+      description: Returns a document by ID (collaborator/admin only)
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Document details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  document:
+                    $ref: '#/components/schemas/Document'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Document not found
+
+    put:
+      tags: [Collaboration]
+      summary: Update document
+      description: Updates a document's title and content (collaborator/admin only)
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+      responses:
+        '200':
+          description: Document updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  document:
+                    $ref: '#/components/schemas/Document'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+
+    delete:
+      tags: [Collaboration]
+      summary: Delete document
+      description: Deletes a document and its notes (collaborator/admin only)
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Document deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+
+  /collab/agent/documents:
+    get:
+      tags: [Agent API]
+      summary: List documents (agent)
+      description: Lists all documents (requires documents:read permission)
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: List of documents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  documents:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DocumentSummary'
+        '401':
+          description: Invalid or expired API key
+        '403':
+          description: Permission denied
+
+    post:
+      tags: [Agent API]
+      summary: Create document (agent)
+      description: Creates a new document (requires documents:write permission)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title]
+              properties:
+                title:
+                  type: string
+                content:
+                  type: string
+      responses:
+        '201':
+          description: Document created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  message:
+                    type: string
+        '400':
+          description: Missing title
+        '401':
+          description: Invalid or expired API key
+        '403':
+          description: Permission denied
+
+  /collab/agent/notes:
+    get:
+      tags: [Agent API]
+      summary: List notes (agent)
+      description: Lists notes, optionally filtered by document (requires notes:read permission)
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: document_id
+          in: query
+          schema:
+            type: integer
+          description: Filter by document ID
+      responses:
+        '200':
+          description: List of notes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Note'
+        '401':
+          description: Invalid or expired API key
+        '403':
+          description: Permission denied
+
+    post:
+      tags: [Agent API]
+      summary: Create note (agent)
+      description: Adds a note to a document (requires notes:write permission)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [document_id, content]
+              properties:
+                document_id:
+                  type: integer
+                content:
+                  type: string
+      responses:
+        '201':
+          description: Note created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  message:
+                    type: string
+        '400':
+          description: Missing required fields
+        '401':
+          description: Invalid or expired API key
+        '403':
+          description: Permission denied
+        '404':
+          description: Document not found
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sb-access-token
+      description: Supabase session cookie
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API key for agent access
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        service:
+          type: string
+          example: ai-amp-site
+        timestamp:
+          type: string
+          format: date-time
+
+    SurveySubmission:
+      type: object
+      required: [clarity_rating, would_use]
+      properties:
+        clarity_rating:
+          type: string
+          enum: [Very clear, Somewhat clear, Not clear]
+        interesting_features:
+          type: array
+          items:
+            type: string
+            enum: [agents, audit, recovery, soc2, dashboard, tdd]
+        concerns:
+          type: string
+        would_use:
+          type: string
+          enum: [Yes, Maybe, No]
+        other_feedback:
+          type: string
+        email:
+          type: string
+          format: email
+
+    SurveyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        id:
+          type: integer
+
+    NewsletterResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        emailSent:
+          type: boolean
+        emailError:
+          type: string
+          nullable: true
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+          format: email
+        full_name:
+          type: string
+        role:
+          type: string
+          enum: [user, collaborator, admin]
+        approved:
+          type: boolean
+        approved_at:
+          type: string
+          format: date-time
+        approved_by:
+          type: string
+
+    PendingUser:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+        full_name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    ApproveResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        user:
+          $ref: '#/components/schemas/UserProfile'
+        resetEmailSent:
+          type: boolean
+        welcomeEmailSent:
+          type: boolean
+        resetError:
+          type: string
+          nullable: true
+
+    Invite:
+      type: object
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        email:
+          type: string
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        created_by:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        expires_at:
+          type: string
+          format: date-time
+        used_at:
+          type: string
+          format: date-time
+          nullable: true
+        used_by:
+          type: string
+          nullable: true
+
+    InviteCreateResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        invite:
+          $ref: '#/components/schemas/Invite'
+        inviteUrl:
+          type: string
+          format: uri
+        emailSent:
+          type: boolean
+        emailError:
+          type: string
+          nullable: true
+
+    InviteValidation:
+      type: object
+      properties:
+        valid:
+          type: boolean
+        reason:
+          type: string
+          description: Present if invalid
+        invite:
+          type: object
+          description: Present if valid
+          properties:
+            id:
+              type: integer
+            email:
+              type: string
+              nullable: true
+            notes:
+              type: string
+              nullable: true
+
+    Document:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        author_id:
+          type: string
+          format: uuid
+        author_name:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    DocumentSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    DocumentCreateResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        document:
+          $ref: '#/components/schemas/Document'
+        message:
+          type: string
+
+    Note:
+      type: object
+      properties:
+        id:
+          type: integer
+        document_id:
+          type: integer
+        content:
+          type: string
+        author_name:
+          type: string
+        author_type:
+          type: string
+          enum: [USER, AGENT]
+        created_at:
+          type: string
+          format: date-time
