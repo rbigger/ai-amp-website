@@ -90,7 +90,7 @@ export default function Home() {
 
           <FadeIn delay={0.3}>
             <p className="text-center mt-xl">
-              <Link href="/product/agent-roles" className="btn btn-secondary">See All 15 Roles</Link>
+              <Link href="/protected/product/agent-roles" className="btn btn-secondary">See All 15 Roles</Link>
             </p>
           </FadeIn>
         </div>
@@ -124,7 +124,7 @@ export default function Home() {
           </StaggerContainer>
           <FadeIn delay={0.3}>
             <p className="text-center mt-xl">
-              <Link href="/product/compliance" className="btn btn-secondary">View Compliance Details</Link>
+              <Link href="/protected/product/compliance" className="btn btn-secondary">View Compliance Details</Link>
             </p>
           </FadeIn>
         </div>
@@ -148,7 +148,7 @@ export default function Home() {
 
           <FadeIn delay={0.3}>
             <p className="text-center mt-xl">
-              <Link href="/product/dashboard" className="btn btn-secondary">Explore the Dashboard</Link>
+              <Link href="/protected/product/dashboard" className="btn btn-secondary">Explore the Dashboard</Link>
             </p>
           </FadeIn>
         </div>

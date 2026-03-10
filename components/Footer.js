@@ -42,10 +42,10 @@ export default function Footer() {
             <h4>Product</h4>
             <ul>
               <li><Link href="/product/overview">Overview</Link></li>
-              <li><Link href="/product/agent-roles">Agent Roles</Link></li>
-              <li><Link href="/product/compliance">Compliance</Link></li>
-              <li><Link href="/product/dashboard">Dashboard</Link></li>
-              <li><Link href="/product/memory">Memory Model</Link></li>
+              <li><Link href="/protected/product/agent-roles">Agent Roles</Link></li>
+              <li><Link href="/protected/product/compliance">Compliance</Link></li>
+              <li><Link href="/protected/product/dashboard">Dashboard</Link></li>
+              <li><Link href="/protected/product/memory">Memory Model</Link></li>
             </ul>
           </div>
           <div className="footer-col">
