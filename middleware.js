@@ -31,6 +31,10 @@ export async function middleware(request) {
   const collabRoutes = ['/collab', '/api/collab'];
   const isCollabRoute = collabRoutes.some(route => pathname.startsWith(route)) && !pathname.startsWith('/api/collab/agent');
 
+  // Protected routes - require auth + approved user (IP-sensitive content)
+  const protectedRoutes = ['/protected', '/api/protected'];
+  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+
   // Redirect to login if not authenticated
   if (!user) {
     const loginUrl = new URL('/login', request.url);
