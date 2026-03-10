@@ -51,10 +51,10 @@ export default function Home() {
               <div className="card" style={{ backgroundColor: 'var(--color-background-alt)' }}>
                 <h4>AI-AMP Provides</h4>
                 <ul style={{ listStyle: 'none' }}>
-                  <li><strong>15 Specialized Agents</strong> &ndash; Each with defined decision scopes and escalation paths</li>
-                  <li><strong>Real-Time Liveness</strong> &ndash; Process-level monitoring verifies agents are actually running</li>
-                  <li><strong>TDD Mandatory</strong> &ndash; Tests first, 0 build errors required before handoff</li>
-                  <li><strong>Auto-Recovery</strong> &ndash; Dead processes detected instantly, RESCUER initiated automatically</li>
+                  <li><strong>Specialized Agents</strong> &ndash; Purpose-built roles for every stage of development</li>
+                  <li><strong>Real-Time Monitoring</strong> &ndash; Always know your agents are working</li>
+                  <li><strong>Quality Assurance</strong> &ndash; Tested code, every time</li>
+                  <li><strong>Auto-Recovery</strong> &ndash; Work continues even when issues occur</li>
                 </ul>
               </div>
             </FadeIn>
@@ -69,15 +69,15 @@ export default function Home() {
             <h2 className="text-center mb-lg">15 Specialized Agent Roles</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-center text-light mb-2xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-2xl)' }}>Like a well-run engineering organization, AI-AMP uses specialized roles with clear responsibilities and handoffs.</p>
+            <p className="text-center text-light mb-2xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-2xl)' }}>Like a well-run engineering organization, AI-AMP uses specialized roles with clear responsibilities.</p>
           </FadeIn>
 
           <StaggerContainer className="grid grid-4">
             {[
-              { name: 'ARCHITECT', desc: 'Decomposes visions, delegates work, verifies independently' },
-              { name: 'CODER', desc: 'TDD mandatory, 0 build errors before handoff' },
-              { name: 'CISO', desc: 'Classifies vulnerabilities, SEV0/1 require approval' },
-              { name: 'RESCUER', desc: 'Reconstructs crashed agent context' },
+              { name: 'ARCHITECT', desc: 'Ensures coherent system design' },
+              { name: 'CODER', desc: 'Delivers tested, production-ready code' },
+              { name: 'CISO', desc: 'Maintains security standards' },
+              { name: 'RESCUER', desc: 'Ensures work continuity' },
             ].map((role) => (
               <StaggerItem key={role.name}>
                 <div className="card text-center">
@@ -137,7 +137,7 @@ export default function Home() {
             <h2 className="text-center mb-lg">Complete Visibility</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-center text-light mb-xl" style={{ maxWidth: '600px', margin: '0 auto var(--spacing-xl)' }}>Real-time dashboard with 22 views. See what every agent is doing, track work progress, and monitor system health.</p>
+            <p className="text-center text-light mb-xl" style={{ maxWidth: '600px', margin: '0 auto var(--spacing-xl)' }}>Real-time dashboard for complete visibility. See what every agent is doing, track work progress, and monitor system health.</p>
           </FadeIn>
 
           <FadeIn delay={0.2}>
