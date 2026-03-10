@@ -1,0 +1,568 @@
+
+ * ▐▛███▜▌ *   Claude Code v2.0.70
+* ▝▜█████▛▘ *  Opus 4.5 · Claude Max
+ *  ▘▘ ▝▝  *   /Users/Shared/dev/SDLC/sdlc-operations/marketing/web/ai-amp-site
+══════════════════ Conversation compacted · ctrl+o for history ═════════════════
+
+> /compact 
+  ⎿  Compacted (ctrl+o to see full summary)
+  ⎿  Read pages/product/overview.js (90 lines)
+  ⎿  Read pages/product/memory.js (125 lines)
+  ⎿  Read ../../../kb/howto/HOWTO-PARKING-LOT-NOTES.md (224 lines)
+  ⎿  Referenced file ../../../Visions/VIS-AGENT-001-draft.md
+  ⎿  Read ../../../handoffs/CONTEXT-RESTORE-5faca886-20251216.md (204 lines)
+
+> /recover 5faca886-87be-4351-9734-111a46f908a4 
+
+> /recover is running… 5faca886-87be-4351-9734-111a46f908a4 
+
+⏺ Bash(PGPASSWORD=postgres psql -h localhost -U postgres -d sdlc_private -c
+      "SELECT * FROM agent_tracker.recover_agent('5faca886-87be-4351-9734-111a46
+      f908a4'::uuid);")
+  ⎿  Error: Exit code 2
+     psql: error: connection to server at "localhost" (::1), port 5432 failed: 
+     FATAL:  role "postgres" does not exist
+
+⏺ Bash(psql -d sdlc_private -c "SELECT * FROM agent_tracker.recover_agent('5faca
+      886-87be-4351-9734-111a46f908a4'::uuid);")
+  ⎿             out_agent_guid            |        out_agent_id         | o
+    ut_status |                                                         out
+    _message                                                         |
+    … +103 lines (ctrl+o to expand)
+
+
+
+⏺ Recovery complete.
+
+  Identity: <<IDENTITY:GUID:5faca886-87be-4351-9734-111a46f908a4:PRODUCT-MGR_20251210_120401>>
+
+  | Field    | Value                                |
+  |----------|--------------------------------------|
+  | GUID     | 5faca886-87be-4351-9734-111a46f908a4 |
+  | Agent ID | PRODUCT-MGR_20251210_120401          |
+  | Instance | 8                                    |
+  | Role     | PRODUCT-MGR                          |
+  | Status   | IDLE                                 |
+
+  Recovered Context:
+
+  Current Task: AI-AMP Marketing Website and strategic planning - scenarios by project size for Service Delivery vertical
+
+  Work Completed (Last Session):
+  - Added dashboard screenshot to website, pushed to GitHub
+  - Agent scaling scenarios: 6 tiers, 20-25 agent max
+  - Selected Service Delivery vertical for case studies
+  - Parking lot notes system implemented with DBA
+  - Updated marketing pages (memory.js, overview.js)
+  - Captured 5 strategic notes
+  - Notes feature added to Agent DNA
+
+  Next Actions:
+  1. Develop narrative case studies for service delivery projects (one per scale tier)
+  2. Continue strategic direction work (AI-AMP as runtime platform vs dev tool)
+  3. Review open notes tagged 'marketing'
+  4. Pick specific projects: Freelancer tracker, MSP ticketing, Field service dispatch, PSA, Enterprise ITSM, Multi-client MSP platform
+
+  Key Notes:
+  - NOTE-20251216-172536-c077: AI-AMP as runtime platform
+  - NOTE-20251216-180116-59f4: Agent scaling model framework
+  - NOTE-20251216-180148-6893: Service delivery sector projects
+
+  Ready to continue. What would you like to work on?
+
+> What kind of marketing information do we have available?
+I'm thinking of things like the roadmap
+Product description
+Whatever else we have, can you give me a list? 
+
+⏺ Search(pattern: "/Users/Shared/dev/SDLC/sdlc-operations/marketing/**/*")
+  ⎿  Found 100 files (ctrl+o to expand)
+
+⏺ Search(pattern: "/Users/Shared/dev/SDLC/sdlc-operations/marketing/**/*.md")
+  ⎿  Found 100 files (ctrl+o to expand)
+
+⏺ Search(pattern: "/Users/Shared/dev/SDLC/sdlc-operations/**/*ROADMAP*")
+  ⎿  Found 2 files (ctrl+o to expand)
+
+⏺ Here's the marketing/product documentation inventory:
+
+  Strategy & Planning
+  - docs/PRODUCT-ROADMAP-Q1-2026.md (also PDF)
+  - marketing/MARKETING-VISION-AI-AMP.md
+  - marketing/MARKETING-PLAN-AI-AMP.md
+  - marketing/VOICE-OF-CUSTOMER.md (70+ value statements)
+
+  Website Content (Source Pages)
+  - marketing/web/pages/home.md
+  - marketing/web/pages/product-overview.md
+  - marketing/web/pages/agent-roles.md
+  - marketing/web/pages/memory.md
+  - marketing/web/pages/dashboard.md
+  - marketing/web/pages/compliance.md
+  - marketing/web/pages/pricing.md
+  - marketing/web/pages/enterprise.md
+  - marketing/web/pages/healthcare.md
+  - marketing/web/pages/financial-services.md
+
+  Website Spec
+  - marketing/web/WEBSITE-SPEC.md
+
+  Live Website (Next.js)
+  - marketing/web/ai-amp-site/ - deployed to Vercel (rbigger/ai-amp-website)
+
+  Images
+  - agent-lifecycle.png
+  - agent-lifecycle-operational.png
+  - dashboard-screenshot.png
+
+  Do you want me to read any of these to refresh my understanding, or are you looking for something specific?
+
+> You've got lots of context so this is a good time for you to reread all of
+ these materials and consider if any of them need to be factored. If you 
+decide something, do you need to re-Factored some of them or consolidate 
+them, whatever make a note about what you wanna do with the link to your 
+Proposed plan. And email me the PDF for that plan.Do you understand what I'm
+ asking for? 
+
+⏺ Yes, I understand:
+
+  1. Read all the marketing/product documents listed
+  2. Analyze for inconsistencies, redundancies, gaps, or consolidation opportunities
+  3. Create a proposed refactoring/consolidation plan
+  4. Save the plan as a parking lot note (with link to the document)
+  5. Generate a PDF and email it to you
+
+  This is a content audit with recommendations. Should I proceed?
+
+> yes, The general rule is anytime we've been significant work, We tidy up 
+before we proceed with other tasks 
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/docs/PRODUCT-ROADMAP-Q1-2026.md)
+  ⎿  Read 226 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/MARKETING-VISION-AI-AMP.
+      md)
+  ⎿  Read 312 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/MARKETING-PLAN-AI-AMP.md
+      )
+  ⎿  Read 371 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/VOICE-OF-CUSTOMER.md)
+  ⎿  Read 223 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/WEBSITE-SPEC.md)
+  ⎿  Read 419 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/home.md)
+  ⎿  Read 240 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/product-overvi
+      ew.md)
+  ⎿  Read 228 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/agent-roles.md
+      )
+  ⎿  Read 364 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/compliance.md)
+  ⎿  Read 239 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/dashboard.md)
+  ⎿  Read 216 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/memory.md)
+  ⎿  Read 260 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/financial-serv
+      ices.md)
+  ⎿  Read 229 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/healthcare.md)
+  ⎿  Read 191 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/enterprise.md)
+  ⎿  Read 244 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/marketing/web/pages/pricing.md)
+  ⎿  Read 248 lines
+
+⏺ Write(/Users/Shared/dev/SDLC/sdlc-operations/marketing/MARKETING-CONTENT-AUDIT
+       -20251216.md)
+  ⎿  Wrote 180 lines to ../../MARKETING-CONTENT-AUDIT-20251216.md
+     # Marketing Content Audit & Refactoring Plan
+     **Date**: 2025-12-16
+     **Author**: PRODUCT-MGR_20251210_120401
+     (5faca886-87be-4351-9734-111a46f908a4)
+     **Status**: PROPOSAL - Awaiting USER approval
+     ---
+     ## Executive Summary
+     … +170 lines (ctrl+o to expand)
+
+⏺ Bash(psql -d sdlc_private -c "SELECT * FROM agent_tracker.create_note(
+          '5faca886-87be-4351-9734-111a46f908a4'::uuid,…)
+  ⎿         out_note_id        | out_status |                        out_me
+    ssage
+    ---------------------------+------------+------------------------------
+    … +4 lines (ctrl+o to expand)
+
+
+
+⏺ Bash(pandoc /Users/Shared/dev/SDLC/sdlc-operations/marketing/MARKETING-CONTENT
+      -AUDIT-20251216.md -o /tmp/MARKETING-CONTENT-AUDIT-20251216.pdf
+      --pdf-engine=pdflatex -…)
+  ⎿  (No content)
+
+⏺ Bash(python3 << 'EOF'
+      import sys…)
+  ⎿  ✓ Email sent successfully!                           
+       To: roger@discoverie.us
+       Subject: Marketing Content Audit & Refactoring Plan
+     … +9 lines (ctrl+o to expand)
+
+⏺ Done. PDF emailed.
+
+  Summary of Findings:
+
+  Inconsistencies
+  - Agent count: 13 in marketing, 14 in VIS-AGENT-001 (COMPLIANCE added)
+  - Dashboard views: 19 vs 22 in different docs
+  - Stale metrics hardcoded (485 handoffs, 198 tests, 532 agents)
+
+  Redundancies
+  - Three website versions: .md source, .html static (obsolete), .js live
+  - Same content repeated: memory model, Replit incident, SOC 2 tables
+
+  Gaps
+  - Service Delivery vertical (discussed last session, not documented)
+  - Case studies (all placeholders)
+  - Blog/white paper content
+
+  Decisions Needed from You:
+  1. Keep .md files canonical (sync required) or deprecate them?
+  2. Remove stale metrics vs genericize ("485+" vs "hundreds of")?
+  3. Confirm agent count: 13 or 14?
+  4. Confirm production domain
+
+  Artifacts:
+  - Plan: /sdlc-operations/marketing/MARKETING-CONTENT-AUDIT-20251216.md
+  - Note: NOTE-20251216-184822-f356
+  - PDF: Sent to roger@discoverie.us
+
+> list the current agent roles 
+
+⏺ Bash(psql -d sdlc_private -c "SELECT
+      unnest(enum_range(NULL::agent_tracker.agent_type)) AS role ORDER BY 1;")
+  ⎿  Error: Exit code 1
+     ERROR:  type "agent_tracker.agent_type" does not exist
+     LINE 1: SELECT unnest(enum_range(NULL::agent_tracker.agent_type)) AS...
+                                            ^
+
+⏺ Bash(psql -d sdlc_private -c "SELECT DISTINCT role FROM agent_tracker.agents
+      ORDER BY role;")
+  ⎿  Error: Exit code 1
+     ERROR:  column "role" does not exist
+     LINE 1: SELECT DISTINCT role FROM agent_tracker.agents ORDER BY role...
+                             ^
+
+⏺ Bash(psql -d sdlc_private -c "\d agent_tracker.agents")
+  ⎿                                                                        
+                       Table "agent_tracker.agents"
+               Column           |            Type             | Collation |
+    … +221 lines (ctrl+o to expand)
+
+
+⏺ Bash(psql -d sdlc_private -c "SELECT unnest(enum_range(NULL::agent_type)) AS
+      role ORDER BY 1;")
+  ⎿      role                      
+     -------------
+      RESEARCHER
+     … +17 lines (ctrl+o to expand)
+
+⏺ Current agent roles from database (14 operational roles):
+
+  | #   | Role        | Purpose                                |
+  |-----|-------------|----------------------------------------|
+  | 1   | ANALYST     | Data analysis, recommendations         |
+  | 2   | ARCHITECT   | Strategic design, orchestration        |
+  | 3   | CISO        | Security ops, vulnerability mgmt       |
+  | 4   | CODER       | Implementation, feature development    |
+  | 5   | COMPLIANCE  | Evidence collection, audit, regulatory |
+  | 6   | DB-ADMIN    | Database design, optimization          |
+  | 7   | DEVOPS      | Deployment, infrastructure, CI/CD      |
+  | 8   | LIBRARIAN   | Knowledge management, documentation    |
+  | 9   | PRODUCT-MGR | Product strategy, requirements         |
+  | 10  | PROJECT-MGR | Execution tracking, coordination       |
+  | 11  | RESEARCHER  | Information gathering, synthesis       |
+  | 12  | REVIEWER    | Code review, quality gates             |
+  | 13  | TESTER      | Testing, QA, validation                |
+  | 14  | UX-DESIGNER | User experience design                 |
+
+  Also in enum but not operational roles:
+  - SPAWNED (lifecycle state)
+  - HUMAN (represents user)
+  - RESCUER (special temporary role)
+
+  Update needed: Marketing materials say "13 specialized agents" but database shows 14 roles (CISO and COMPLIANCE are separate).
+
+> You Should add rescuer 
+
+⏺ You're right. RESCUER is a legitimate operational role for crash recovery.
+
+  Updated count: 15 agent roles
+
+  | #   | Role        | Purpose                                |
+  |-----|-------------|----------------------------------------|
+  | 1   | ANALYST     | Data analysis, recommendations         |
+  | 2   | ARCHITECT   | Strategic design, orchestration        |
+  | 3   | CISO        | Security ops, vulnerability mgmt       |
+  | 4   | CODER       | Implementation, feature development    |
+  | 5   | COMPLIANCE  | Evidence collection, audit, regulatory |
+  | 6   | DB-ADMIN    | Database design, optimization          |
+  | 7   | DEVOPS      | Deployment, infrastructure, CI/CD      |
+  | 8   | LIBRARIAN   | Knowledge management, documentation    |
+  | 9   | PRODUCT-MGR | Product strategy, requirements         |
+  | 10  | PROJECT-MGR | Execution tracking, coordination       |
+  | 11  | RESEARCHER  | Information gathering, synthesis       |
+  | 12  | RESCUER     | Crash recovery, context restoration    |
+  | 13  | REVIEWER    | Code review, quality gates             |
+  | 14  | TESTER      | Testing, QA, validation                |
+  | 15  | UX-DESIGNER | User experience design                 |
+
+  Not roles:
+  - SPAWNED (lifecycle state)
+  - HUMAN (represents user)
+
+  Marketing materials need updating from "13" to "15" specialized agents.
+
+> Do you have access to the role descriptions for each agent type? 
+
+⏺ Search(pattern: "/Users/Shared/dev/SDLC/sdlc-operations/**/*ROLE*")
+  ⎿  Found 20 files (ctrl+o to expand)
+
+⏺ Search(pattern: "/Users/Shared/dev/SDLC/sdlc-operations/kb/**/*.md")
+  ⎿  Found 43 files (ctrl+o to expand)
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/DevEnv/RUN_BOOK/ROLES-COMPLETE-DEF
+      INITIONS.md)
+  ⎿  Read 528 lines
+
+⏺ Yes. Found ROLES-COMPLETE-DEFINITIONS.md with 14 roles defined.
+
+  Missing from that document: RESCUER
+
+  Let me check the RESCUER definition:
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/kb/roles/ROLE-RESCUER-v3.md)
+  ⎿  Read 436 lines
+
+⏺ Yes. Found two sources:
+
+  1. ROLES-COMPLETE-DEFINITIONS.md (14 roles)
+  - Location: /DevEnv/RUN_BOOK/ROLES-COMPLETE-DEFINITIONS.md
+  - Contains: Full definitions with purpose, authority, accountability, handoff matrix, SQL seed data
+  - Roles: RESEARCHER, ANALYST, ARCHITECT, LIBRARIAN, PRODUCT-MGR, PROJECT-MGR, UX-DESIGNER, DB-ADMIN, CODER, TESTER, REVIEWER, DEVOPS, CISO, COMPLIANCE
+
+  2. ROLE-RESCUER-v3.md (1 role, separate file)
+  - Location: /kb/roles/ROLE-RESCUER-v3.md
+  - Contains: Full operational prompt with procedures, edge cases, checklist
+  - Version 3.0, actively maintained
+
+  Gap identified: RESCUER is not in ROLES-COMPLETE-DEFINITIONS.md. Should be added for consistency.
+
+  Also found:
+  - Individual ROLE-*.md files for CODER, CISO, COMPLIANCE, DEVOPS, PRODUCT-MGR in RUN_BOOK
+  - Per-role ONBOARDING.md files in /kb/{role}/ for 11 roles
+  - Missing ONBOARDING.md: CISO, COMPLIANCE, RESEARCHER, RESCUER
+
+  Want me to add RESCUER to ROLES-COMPLETE-DEFINITIONS.md?
+
+> I'm assigning a librarian to work specifically with you on these roles. 
+I'd like you to start with compliance. Check your in basket in five minutes 
+for a message from Librarian 2 on this task. 
+
+⏺ Understood. I'll focus on the COMPLIANCE role and check my inbox in 5 minutes for Librarian 2's message.
+
+⏺ Ready. I'll check my inbox shortly.
+
+  Current COMPLIANCE role sources I have access to:
+  - ROLES-COMPLETE-DEFINITIONS.md (basic definition)
+  - ROLE-COMPLIANCE.md in RUN_BOOK (detailed reference)
+  - No ONBOARDING.md yet for COMPLIANCE
+
+> Librarian two has already responded. So check your Messages. Read it and 
+reply back to librarian 2. 
+
+⏺ Bash(psql -d sdlc_private -c "SELECT message_id, from_agent_id, subject,
+      status, created_at FROM
+      agent_tracker.get_inbox('5faca886-87be-4351-9734-111a46f908a4') ORDE…)
+  ⎿  Error: Exit code 1
+     ERROR:  column "from_agent_id" does not exist
+     LINE 1: SELECT message_id, from_agent_id, subject, status, created_a...
+                                ^
+
+⏺ Bash(psql -d sdlc_private -c "SELECT * FROM
+      agent_tracker.get_inbox('5faca886-87be-4351-9734-111a46f908a4') ORDER BY
+      created_at DESC LIMIT 5;")
+  ⎿          message_id        |        from_name         |                
+          subject                       | message_type  | priority | status
+     |          created_at
+     … +19 lines (ctrl+o to expand)
+
+⏺ Bash(psql -d sdlc_private -c "SELECT message_id, from_name, subject, body,
+      document_path FROM agent_tracker.agent_mailbox WHERE message_id =
+      'MSG-20251216-185717-fa7…)
+  ⎿  Error: Exit code 1
+     ERROR:  column "from_name" does not exist
+     LINE 1: SELECT message_id, from_name, subject, body, document_path F...
+                                ^
+
+⏺ Bash(psql -d sdlc_private -c "SELECT * FROM agent_tracker.agent_mailbox WHERE
+      message_id = 'MSG-20251216-185717-fa79';")
+  ⎿          message_id        | from_senior_id | to_senior_id |
+               subject                       | message_type |
+                                                  body
+     … +441 lines (ctrl+o to expand)
+
+⏺ Bash(psql -d sdlc_private -c "SELECT
+      agent_tracker.mark_message_read('MSG-20251216-185717-fa79');")
+  ⎿   mark_message_read 
+     -------------------
+
+     (1 row)
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/DevEnv/RUN_BOOK/ROLE-COMPLIANCE.md
+      )
+  ⎿  Read 392 lines
+
+⏺ Now I'll send a reply to Librarian 2:
+
+⏺ Bash(psql -d sdlc_private -c "SELECT agent_tracker.send_agent_message(
+          'PRODUCT-MGR_20251210_120401',…)
+  ⎿                               
+       send_agent_message
+     … +7 lines (ctrl+o to expand)
+
+⏺ Bash(psql -d sdlc_private -c "SELECT agent_id, agent_guid, display_name FROM
+      agent_tracker.agents WHERE agent_id LIKE '%LIBRARIAN%' AND is_active =
+      true ORDER BY cre…)
+  ⎿          agent_id          |              agent_guid              | dis
+    play_name
+    ---------------------------+--------------------------------------+----
+    … +6 lines (ctrl+o to expand)
+
+
+
+⏺ Bash(psql -d sdlc_private -c "SELECT agent_tracker.send_agent_message(
+          'PRODUCT-MGR_20251210_120401',…)
+  ⎿                                send_agent_message                      
+
+    -----------------------------------------------------------------------
+    … +4 lines (ctrl+o to expand)
+
+
+⏺ Done. Message sent to Librarian 2 (MSG-20251216-185936-078f).
+
+  Summary of my input:
+
+  1. Marketing alignment - Requested clear value statements connecting to customer benefits (audit readiness, automatic evidence collection, regulatory confidence)
+  2. Framework coverage - Emphasized SOC 2, NYDFS 500, ISO 42001/27001, FFIEC as marketing differentiators
+  3. Role count - Confirmed need to update marketing from "13" to "15" agents (COMPLIANCE + RESCUER)
+  4. Technical gaps - Flagged 7 planned database tables and 8 HOWTOs that may not exist yet
+  5. Proposed next steps - Split creation, draft review, marketing alignment verification, DBA coordination
+
+  Awaiting Librarian 2's response with timeline.
+
+> What material do we have on our memory model and it's management? 
+
+⏺ Search(pattern: "/Users/Shared/dev/SDLC/sdlc-operations/**/*[Mm]emory*")
+  ⎿  Found 36 files (ctrl+o to expand)
+
+⏺ Search(pattern: "four-tier|HOT.*WARM|memory model|Agent Memory", path:
+        "/Users/Shared/dev/SDLC/sdlc-operations")
+  ⎿  Found 42 files (ctrl+o to expand)
+
+⏺ Bash(ls -la /Users/Shared/dev/SDLC/sdlc-operations/docs/*[Mm]emory*
+      /Users/Shared/dev/SDLC/sdlc-operations/docs/*AMM* 2>/dev/null)
+  ⎿  Error: Exit code 1
+     (eval):1: no matches found: 
+     /Users/Shared/dev/SDLC/sdlc-operations/docs/*[Mm]emory*
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/docs/VISION-AMM-2025-Q1.md)
+  ⎿  Read 361 lines
+
+⏺ Read(/Users/Shared/dev/SDLC/sdlc-operations/docs/DURABLE-MEMORY-PLAN.md)
+  ⎿  Read 1023 lines
+
+⏺ Search(pattern: "## .*Memory|### .*Tier", path:
+        "/Users/Shared/dev/SDLC/sdlc-operations/visions/VIS-AGENT-001-draft.md",
+         output_mode: "content")
+  ⎿  Found 2 lines (ctrl+o to expand)
+
+⏺ Here's the inventory of memory model documentation:
+
+  Core Technical Documents
+
+  | Document               | Location  | Content                                                                                                                                 |
+  |------------------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------------|
+  | DURABLE-MEMORY-PLAN.md | /docs/    | 1023 lines - Comprehensive. Covers identity, terminal linking, handoffs, senior agents, three-tier KB, AMM, mailbox, context monitoring |
+  | VISION-AMM-2025-Q1.md  | /docs/    | 361 lines - Agent Memory Manager vision. Background service for auto-handoffs, context tracking, JSONL monitoring                       |
+  | VIS-AGENT-001-draft.md | /visions/ | Contains Section 5: "Agent Memory" with 4-tier model (lines 322+)                                                                       |
+
+  Marketing/Website Content
+
+  | Document  | Location                                  | Purpose                               |
+  |-----------|-------------------------------------------|---------------------------------------|
+  | memory.md | /marketing/web/pages/                     | Website copy for /product/memory page |
+  | memory.js | /marketing/web/ai-amp-site/pages/product/ | Live Next.js implementation           |
+
+  Handoffs (Historical Context)
+
+  | File                                    | Date   | Topic                        |
+  |-----------------------------------------|--------|------------------------------|
+  | PRE-COMPACT-SDLC-4TIER-MEMORY-20251130  | Nov 30 | Four-tier memory design      |
+  | PRE-COMPACT-SDLC-Designed_memory_system | Nov 25 | Initial memory system design |
+
+  Summary of Coverage
+
+  - HOT tier (Agent DNA): Defined in CLAUDE.md and role files
+  - WARM tier (Role context): Loaded via /checkin, stored in role definitions
+  - COOL tier (Handoffs): Extensive coverage in DURABLE-MEMORY-PLAN.md
+  - COLD tier (Knowledge Base): KB structure defined, /kb/ directory exists
+  - AMM (Auto Memory Manager): Vision exists, implementation "IN PROGRESS" per roadmap
+
+  What aspect do you want to drill into?
+
+> Run handoff and then we'll discuss it 
+
+> /handoff is running… 
+
+⏺ Bash(PGPASSWORD=postgres psql -h localhost -U postgres -d sdlc_private -c
+      "SELECT * FROM agent_tracker.handoff_agent(
+          '5faca886-87be-4351-9734-111a46f908a4'::uui…)
+  ⎿  Error: Exit code 2
+     psql: error: connection to server at "localhost" (::1), port 5432 failed: 
+     FATAL:  role "postgres" does not exist
+
+⏺ Bash(psql -d sdlc_private -c "SELECT * FROM agent_tracker.handoff_agent(
+          '5faca886-87be-4351-9734-111a46f908a4'::uuid,…)
+  ⎿        out_handoff_id        |            out_agent_guid            | o
+    ut_status |           out_message
+    -----------------------------+--------------------------------------+--
+    … +4 lines (ctrl+o to expand)
+
+
+
+⏺ Handoff complete.
+
+  | Field      | Value                                |
+  |------------|--------------------------------------|
+  | Handoff ID | HO-5faca886-20251217_094220          |
+  | GUID       | 5faca886-87be-4351-9734-111a46f908a4 |
+  | Status     | OFFLINE                              |
+
+  Recovery command:
+  /recover 5faca886-87be-4351-9734-111a46f908a4
+
+
+

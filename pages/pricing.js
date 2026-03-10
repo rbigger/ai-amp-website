@@ -6,7 +6,7 @@ export default function Pricing() {
     {
       name: 'Core',
       price: '$TBD',
-      period: 'Contact for pricing',
+      period: 'per month',
       description: 'Individual developers and evaluation',
       features: [
         'Up to 3 agent roles',
@@ -23,7 +23,7 @@ export default function Pricing() {
       period: 'per seat/month',
       description: 'Development teams ready to scale',
       features: [
-        'All 13 agent roles',
+        'All 15 agent roles',
         'Full dashboard (22 views)',
         'Cloud-hosted option',
         'GitHub, Vercel, Supabase, Slack',
@@ -36,7 +36,7 @@ export default function Pricing() {
     {
       name: 'Enterprise',
       price: '$TBD',
-      period: 'Contact for pricing',
+      period: 'per seat/month',
       description: 'Organizations with compliance needs',
       features: [
         'Everything in Teams, plus:',
@@ -54,7 +54,7 @@ export default function Pricing() {
     {
       name: 'Financial Services',
       price: '$TBD',
-      period: 'Contact for pricing',
+      period: 'per seat/month',
       description: 'Banks and regulated institutions',
       features: [
         'Everything in Enterprise, plus:',
@@ -73,7 +73,7 @@ export default function Pricing() {
   return (
     <Layout
       title="Pricing"
-      description="AI-AMP pricing for Core, Teams, Enterprise, and Financial Services plans. Contact us for details."
+      description="AI-AMP pricing for Core, Teams, Enterprise, and Financial Services plans."
     >
       {/* Hero */}
       <section className="hero hero-page">
@@ -99,8 +99,8 @@ export default function Pricing() {
                     <li key={i}>{feature}</li>
                   ))}
                 </ul>
-                <Link href="/contact-sales" className={`btn ${tier.featured ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%' }}>
-                  Contact Sales
+                <Link href="/signup" className={`btn ${tier.featured ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%' }}>
+                  Sign Up
                 </Link>
               </div>
             ))}
@@ -124,7 +124,7 @@ export default function Pricing() {
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>Agent Roles</strong></td><td>3</td><td>13</td><td>13</td><td>13</td></tr>
+                <tr><td><strong>Agent Roles</strong></td><td>3</td><td>15</td><td>15</td><td>15</td></tr>
                 <tr><td><strong>Dashboard Views</strong></td><td>Basic</td><td>22</td><td>22</td><td>22</td></tr>
                 <tr><td><strong>Session History</strong></td><td>7 days</td><td>90 days</td><td>Custom</td><td>Custom</td></tr>
                 <tr><td><strong>Audit Logging</strong></td><td>&mdash;</td><td>Basic</td><td>Advanced</td><td>Advanced + Compliance</td></tr>
@@ -146,10 +146,10 @@ export default function Pricing() {
           <h2 className="text-center mb-2xl">Frequently Asked Questions</h2>
           <div className="grid grid-2">
             {[
-              { q: 'Can I see a demo before committing?', a: 'Yes. Request a demo and we\'ll schedule a personalized walkthrough of AI-AMP for your team.' },
+              { q: 'How do I get started?', a: 'Sign up for early access. We\'ll review your application and notify you when your account is ready.' },
               { q: 'Can I switch plans later?', a: 'Yes. Upgrade anytime. Downgrade at the end of your billing period.' },
               { q: 'What counts as a seat?', a: 'Any user who can create or manage agents. Read-only dashboard access doesn\'t require a seat.' },
-              { q: 'How is Enterprise pricing determined?', a: 'Based on number of users, deployment model, and specific requirements. Contact us for a quote.' },
+              { q: 'How is Enterprise pricing determined?', a: 'Based on number of users, deployment model, and specific requirements.' },
             ].map((faq, i) => (
               <div key={i} className="card">
                 <h4>{faq.q}</h4>
@@ -163,10 +163,10 @@ export default function Pricing() {
       {/* CTA */}
       <section className="cta">
         <div className="container">
-          <h2>Not Sure Which Plan?</h2>
-          <p>Talk to our team. We&apos;ll help you find the right fit for your organization.</p>
+          <h2>Ready to Get Started?</h2>
+          <p>Sign up for early access. We review all applications and will notify you when your account is ready.</p>
           <div className="btn-group" style={{ justifyContent: 'center' }}>
-            <Link href="/contact-sales" className="btn btn-primary btn-large">Contact Sales</Link>
+            <Link href="/signup" className="btn btn-primary btn-large">Sign Up</Link>
           </div>
         </div>
       </section>
