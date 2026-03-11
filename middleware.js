@@ -21,7 +21,18 @@ export async function middleware(request) {
   }
 
   // Now call Supabase for authenticated routes
-  const { response, user, supabase } = await updateSession(request);
+  let response, user, supabase;
+  try {
+    const session = await updateSession(request);
+    response = session.response;
+    user = session.user;
+    supabase = session.supabase;
+  } catch (error) {
+    console.error('Middleware auth error:', error.message);
+    const loginUrl = new URL('/login', request.url);
+    loginUrl.searchParams.set('redirect', pathname);
+    return NextResponse.redirect(loginUrl);
+  }
 
   // Admin routes - require auth but skip approval check
   const adminRoutes = ['/admin', '/api/admin'];
