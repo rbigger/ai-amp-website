@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import Layout from '@/components/Layout';
+import FounderModal from '@/components/FounderModal';
 
 export default function About() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Layout
       title="About AI-AMP"
@@ -43,6 +47,21 @@ export default function About() {
       </section>
 
       <section className="section section-alt">
+        <div className="container text-center">
+          <h2 className="mb-md">Leadership</h2>
+          <p className="text-light mb-lg" style={{ maxWidth: '500px', margin: '0 auto var(--spacing-lg)' }}>
+            AI-AMP is led by a founder with decades of enterprise engineering experience.
+          </p>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Meet the Founder
+          </button>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container">
           <h2 className="text-center mb-lg">Built for Regulated Industries</h2>
           <p className="text-center text-light mb-2xl" style={{ maxWidth: '700px', margin: '0 auto var(--spacing-2xl)' }}>
@@ -77,6 +96,8 @@ export default function About() {
           </p>
         </div>
       </section>
+
+      <FounderModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </Layout>
   );
 }
