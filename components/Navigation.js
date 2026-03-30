@@ -52,6 +52,7 @@ export default function Navigation() {
           AI-<span>AMP</span>
         </Link>
         <ul className="nav-links">
+          <li><Link href="/why">Why AI-AMP</Link></li>
           <li className="nav-dropdown">
             <Link href="/product/overview">Product</Link>
             <div className="nav-dropdown-content">

@@ -22,6 +22,7 @@ export default function Home() {
           <FadeIn delay={0.2}>
             <div className="btn-group" style={{ marginTop: 'var(--spacing-xl)' }}>
               <Link href="/product/overview" className="btn btn-primary btn-large">Learn More</Link>
+              <Link href="/why" className="btn btn-secondary btn-large">Why AI-AMP</Link>
             </div>
           </FadeIn>
         </div>
